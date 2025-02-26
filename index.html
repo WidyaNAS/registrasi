@@ -1,295 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Registration Flow</title>
-  <style>
-    /* General styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      background: #4CAF50;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    .section {
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 1200px;
-    }
-    h1, h2 {
-      margin-bottom: 15px;
-    }
-
-    /* Flowchart container */
-    .flowchart {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .flowchart div {
-      border: 2px solid #ccc;
-      padding: 10px 20px;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-      width: fit-content;
-      text-align: center;
-      cursor: pointer;
-    }
-    .arrows {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 0 auto;
-    }
-
-    /* Dual-column container for "Supermarket" & "Marketing Campaign" */
-    .dual-container {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .dual-container div {
-      flex: 1 1 250px; /* Minimum size for smaller devices */
-      max-width: 300px;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #f1f1f1;
-    }
-
-    /* Pop-up Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0,0,0);
-      background-color: rgba(0,0,0,0.4);
-      padding-top: 60px;
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 600px;
-      border-radius: 8px;
-    }
-    .close {
-      color: #aaa;
-      font-size: 28px;
-      font-weight: bold;
-      position: absolute;
-      top: 10px;
-      right: 20px;
-    }
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* Responsiveness */
-    @media (max-width: 768px) { /* Tablet & smaller devices */
-      .dual-container {
-        flex-direction: column;
-        gap: 15px;
-      }
-    }
-
-    @media (max-width: 480px) { /* Mobile phones */
-      header {
-        padding: 15px;
-      }
-      .section {
-        padding: 10px;
-      }
-      .flowchart div {
-        font-size: 14px;
-        padding: 8px 15px;
-      }
-      h1, h2 {
-        font-size: 18px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Sell Your Products to Indonesian Market for Dummies</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
+        
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #FFD700;
+            color: #000;
+            text-align: center;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #000;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff;
+            margin: 0 0 30px 0;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 900px;
+        }
+        .category-button {
+            background-color: black;
+            color: #fff200;
+            padding: 15px 20px;
+            border: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .category-button:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.1);
+        }
+        .flowchart {
+            display: none;
+            text-align: left;
+            background: white;
+            color: black;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            position: relative;
+        }
+        .flowchart h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .flowchart p {
+            margin-bottom: 15px;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-
-<header>
-  <h1>How to sell your products to Indonesian Market for Dummies</h1>
-  <p>Step-by-step guidance to bring your product to the market.</p>
-</header>
-
-<section class="section">
-  <h2>Registration Flow</h2>
-  <div class="flowchart">
-    <div id="factoryReg">Factory Registration</div>
-    <div class="arrows">↓</div>
-    <div id="halalCert">Halal Certificate</div>
-    <div class="arrows">↓</div>
-    <div id="bpomReg">BPOM Registration</div>
-    <div class="arrows">↓</div>
-    <div class="dual-container">
-      <div id="supermarketReg">Supermarket Registration</div>
-      <div id="marketingCampaign">Marketing Campaign</div>
+    <h1>How to Sell Your Products to Indonesian Market <br> for Dummies</h1>
+    <div class="menu-wrapper">
+        <div class="button-container" id="button-container">
+            <button class="category-button" onclick="showFlowchart('dairy')">DAIRY</button>
+            <button class="category-button" onclick="showFlowchart('bakery')">BAKERY & PASTRY EXCLUDE DAIRY PRODUCTS</button>
+            <button class="category-button" onclick="showFlowchart('beverage')">BEVERAGE</button>
+            <button class="category-button" onclick="showFlowchart('dried_fruit_vegg')">DRIED FRUIT & VEGG</button>
+            <button class="category-button" onclick="showFlowchart('condiments_oil')">CONDIMENTS & OIL</button>
+            <button class="category-button" onclick="showFlowchart('convenience_food')">CONVENIENCE FOOD</button>
+            <button class="category-button" onclick="showFlowchart('organic_food_beverage')">ORGANIC FOOD & BEVERAGE</button>
+            <button class="category-button" onclick="showFlowchart('raw_seafood')">RAW SEAFOOD</button>
+        </div>
     </div>
-    <div class="arrows">↓</div>
-    <div>Selling</div>
-  </div>
-</section>
 
-<section class="section">
-  <h2>FAQs</h2>
-  <p><strong>Q: How do I start factory registration?</strong></p>
-  <p>A: Begin by submitting required documents to the relevant authority.</p>
-  <p><strong>Q: What is the validity of the halal certificate?</strong></p>
-  <p>A: It depends on the issuing authority or BPJPH guidelines.</p>
-</section>
+    <div class="flowchart" id="flowchart">
+        <button class="close-button" onclick="hideFlowchart()">X</button>
+        <h2 id="flowchart-title"></h2>
+        <div id="flowchart-content"></div>
+    </div>
 
-<footer>
-  <p>Ready to register your product? <a href="#">Contact us</a> for assistance.</p>
-</footer>
+    <script>
+        function showFlowchart(category) {
+            let title = "";
+            let content = "";
 
-<!-- Pop-up Modals -->
-<div id="factoryModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeFactory">&times;</span>
-    <h2>The Factory has been approved and registered with the SIMREK Indonesia – KESMAVET system</h2>
-  </div>
-</div>
+            if (category === "dairy") {
+                title = "Dairy Product Registration Flow";
+                content = `<p><strong>▶ Factory Registration:</strong> Factory must be approved and registered with SIMREK Indonesia (Veterinary Public Health).</p>`;
+            } else if (category === "bakery") {
+                title = "Bakery & Pastry (Excluding Dairy) Registration Flow";
+            } else if (category === "beverage") {
+                title = "Beverage Registration Flow";
+            } else if (category === "dried_fruit_vegg") {
+                title = "Dried Fruit & Vegetable Registration Flow";
+            } else if (category === "condiments_oil") {
+                title = "Condiments & Oil Registration Flow";
+            } else if (category === "convenience_food") {
+                title = "Convenience Food Registration Flow";
+            } else if (category === "organic_food_beverage") {
+                title = "Organic Food & Beverage Registration Flow";
+            } else if (category === "raw_seafood") {
+                title = "Raw Seafood Registration Flow";
+            }
 
-<div id="halalModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeHalal">&times;</span>
-    <h2>HALAL CERTIFICATE</h2>
-    <p>Every product must have a halal certificate.</p>
-    <p>There are two options for obtaining a halal certificate:</p>
-    <ul>
-      <li>Certification by a foreign halal certification body that has established a Mutual Recognition Agreement (MRA) with BPJPH in Indonesia.</li>
-      <li>Direct certification by BPJPH, which involves an on-site audit of the production facility.</li>
-    </ul>
-    <p>If a halal certificate is obtained through a foreign certification body, the validity period follows the regulations of the respective halal body. If the halal certification is issued directly by BPJPH, the certificate remains valid for a lifetime, provided there are no changes to the ingredients.</p>
-  </div>
-</div>
+            // Konten umum untuk setiap kategori kecuali Dairy
+            if (category !== "dairy") {
+                content = "";
+            }
 
-<div id="bpomModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeBpom">&times;</span>
-    <h2>BPOM REGISTRATION</h2>
-    <p><strong>Required Documents:</strong></p>
-    <ul>
-      <li>Letter of Agreement (signed & stamped by Chamber of Commerce)</li>
-      <li>Health Certificate</li>
-      <li>Artwork</li>
-      <li>Product Specification & Packaging Specification</li>
-      <li>Percentage of Ingredients with a total of 100%</li>
-      <li>Food Safety Certificate (GMP/HACCP/ISO 22000/IFS/BRC)</li>
-      <li>Technical Sheet of Ingredients or MSDS</li>
-      <li>Production Process (Flow Chart)</li>
-      <li>Production Code (meaning) dd/mm/yyyy</li>
-      <li>Product Photo (All Size Available)</li>
-      <li>Product Laboratory Testing</li>
-    </ul>
-    <p>Ensure all conditions are fulfilled based on the applicable standards.</p>
-  </div>
-</div>
+            content += `
+                <p><strong>▶ Halal Certification:</strong> Every product must have a halal certificate. There are two options:
+                    <ul>
+                        <li>Certification by a foreign halal certification body that has an MRA with BPJPH in Indonesia. The facility must be in the same country as the certifying body.</li>
+                        <li>Direct certification by BPJPH, requiring an on-site audit.</li>
+                    </ul>
+                    If obtained through a foreign body, the validity follows their regulations. If issued by BPJPH, it is valid for a lifetime unless ingredients change.
+                </p>
+                <p><strong>▶ BPOM Registration:</strong> Required documents include:
+                    <ul>
+                        <li>Letter of Agreement, Health Certificate, Artwork</li>
+                        <li>Product & Packaging Specifications, Ingredient Breakdown</li>
+                        <li>Food Safety Certificates (GMP, HACCP, ISO 22000, etc.)</li>
+                        <li>Production Process, Production Code, Product Photos</li>
+                        <li>Product Laboratory Testing <br> a. Conducting the Laboratory test in Indonesia (this options requires only the submission of product samples to be tested) <br> b. Conducting the Laboratory test independently - certain requirements must be met in accordance with local regulations <br> -- The Laboratory must be accredited, supported by an accreditation certificate. <br> -- The test parameters must comply with the specific regulations set by BPOM for each product type</li>
+                    </ul>
+                </p>
+                <p><strong>▶ Marketing Campaign:</strong> Includes sampling, cooking demos, and social media promotions.</p>
+                <p><strong>▶ Supermarket Listing:</strong> Fees:
+                    <ul>
+                        <li>Ranch Market: IDR 750K/SKU</li>
+                        <li>Farmers Market: IDR 1.4M/SKU</li>
+                        <li>Hero Supermarket: IDR 10M/product</li>
+                    </ul>
+                    <strong>Support Promotion:</strong>
+                    <ul>
+                        <li>Mailer: IDR 10M per product for 1 month</li>
+                        <li>Dedicated Gondola Shelf: IDR 30M per 3 months per store</li>
+                    </ul>
+                </p>
+                <p><strong>▶ Selling:</strong> Finalize agreements and launch sales.</p>
+            `;
 
-<div id="supermarketModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeSupermarket">&times;</span>
-    <h2>SUPERMARKET REGISTRATION</h2>
-    <p>To sell products in supermarkets, there are several requirements:</p>
-    <ul>
-      <li>Paying the registration/listing fee</li>
-      <li>Providing support in the form of promotional subsidies</li>
-    </ul>
-  </div>
-</div>
+            document.getElementById("flowchart-title").innerHTML = title;
+            document.getElementById("flowchart-content").innerHTML = content;
+            document.getElementById("flowchart").style.display = "block";
+            document.getElementById("button-container").style.display = "none";
+        }
 
-<div id="marketingModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeMarketing">&times;</span>
-    <h2>MARKETING CAMPAIGN</h2>
-    <p>To enhance product awareness and support sales, marketing campaigns are essential. Common activities include:</p>
-    <ul>
-      <li>Product sampling</li>
-      <li>Cooking demonstrations</li>
-      <li>Cooking classes</li>
-      <li>Product awareness campaigns on social media</li>
-      <li>Collaborations with influencers</li>
-    </ul>
-  </div>
-</div>
-
-<script>
-// Get the modal elements
-var factoryModal = document.getElementById("factoryModal");
-var halalModal = document.getElementById("halalModal");
-var bpomModal = document.getElementById("bpomModal");
-var supermarketModal = document.getElementById("supermarketModal");
-var marketingModal = document.getElementById("marketingModal");
-
-// Get the corresponding buttons
-var factoryReg = document.getElementById("factoryReg");
-var halalCert = document.getElementById("halalCert");
-var bpomReg = document.getElementById("bpomReg");
-var supermarketReg = document.getElementById("supermarketReg");
-var marketingCampaign = document.getElementById("marketingCampaign");
-
-// Get the <span> elements to close modals
-var closeFactory = document.getElementById("closeFactory");
-var closeHalal = document.getElementById("closeHalal");
-var closeBpom = document.getElementById("closeBpom");
-var closeSupermarket = document.getElementById("closeSupermarket");
-var closeMarketing = document.getElementById("closeMarketing");
-
-// Event listeners for opening modals
-factoryReg.onclick = function() { factoryModal.style.display = "block"; };
-halalCert.onclick = function() { halalModal.style.display = "block"; };
-bpomReg.onclick = function() { bpomModal.style.display = "block"; };
-supermarketReg.onclick = function() { supermarketModal.style.display = "block"; };
-marketingCampaign.onclick = function() { marketingModal.style.display = "block"; };
-
-// Event listeners for closing modals
-closeFactory.onclick = function() { factoryModal.style.display = "none"; };
-closeHalal.onclick = function() { halalModal.style.display = "none"; };
-closeBpom.onclick = function() { bpomModal.style.display = "none"; };
-closeSupermarket.onclick = function() { supermarketModal.style.display = "none"; };
-closeMarketing.onclick = function() { marketingModal.style.display = "none"; };
-
-// Click anywhere outside the modal to close it
-window.onclick = function(event) {
-  if (event.target == factoryModal) {
-    factoryModal.style.display = "none";
-  } else if (event.target == halalModal) {
-    halalModal.style.display = "none";
-  } else if (event.target == bpomModal) {
-    bpomModal.style.display = "none";
-  } else if (event.target == supermarketModal) {
-    supermarketModal.style.display = "none";
-  } else if (event.target == marketingModal) {
-    marketingModal.style.display = "none";
-  }
-};
-</script>
-
+        function hideFlowchart() {
+            document.getElementById("flowchart").style.display = "none";
+            document.getElementById("button-container").style.display = "grid";
+        }
+    </script>
 </body>
 </html>
